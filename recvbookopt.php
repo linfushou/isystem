@@ -76,25 +76,26 @@ mysql_close($conn);
 <form action="procbookopt.php" method="post">
 <input type="submit" value="查询" name="opt"/>
 </form>
-<!--
-删除指定联系人
-<form action="procdbopt.php" method="post">
-名字(必填): <input type="text" name="firstname" /><br>
+
+删除指定书籍	
+<form action="procbookopt.php" method="post">
+名字(必填): <input type="text" name="name" /><br>
 <input type="submit" value="删除指定" name="opt"/>
 </form>
 
-删除所有联系人
-<form action="procdbopt.php" method="post">
+删除所有书籍
+<form action="procbookopt.php" method="post">
 <input type="submit" value="删除所有" name="opt"/>
 </form>
 
-更新联系人
-<form action="procdbopt.php" method="post">
-姓氏(必填): <input type="text" name="lastname" /><br>
-名字(必填): <input type="text" name="firstname" /><br>
-年龄(必填): <input type="text" name="age" /><br>
-电话(选填): <input type="text" name="phone" /><br>
+更新书籍
+<form action="procbookopt.php" method="post">
+名称(必填): <input type="text" name="name" /><br>
+作者(必填): <input type="text" name="author" /><br>
+出版日期(必填): <input type="text" name="pubdate" /><br>
+简单描述(选填): <input type="text" name="shtdesc" /><br>
+添加日期(必填): <input type="text" name="adddate" /><br>
 <input type="submit" value="更新" name="opt"/>
 </form>
--->
+
 </html>

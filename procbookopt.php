@@ -8,6 +8,14 @@ $dbname='test0918';         //数据库名
 $have_db = false;
 $conn_db_fail_time = 1;
 
+if ($_POST["opt"] == "添加" || $_POST["opt"] == "更新") {
+	print_debug("===检查表单信息===");
+	if (check_book_form() == false) {
+		print_msg("表单不正确，请重填！");
+		return;
+	}
+}
+
 # 连接MySQL服务器
 if (!$conn = mysql_connect($dbhost, $dbuser, $dbpass))
 {
@@ -40,11 +48,11 @@ if ($_POST["opt"] == "查询") {
 } else if ($_POST["opt"] == "添加") {
 	proc_insert_book();
 } else if ($_POST["opt"] == "删除所有") {
-	proc_delete();
+	proc_delete_book();
 } else if ($_POST["opt"] == "删除指定") {
-	proc_delete_def();
+	proc_delete_def_book();
 } else if ($_POST["opt"] == "更新") {
-	proc_revise();	
+	proc_revise_book();	
 }else {
 	print_msg("无对应操作的处理！");
 }

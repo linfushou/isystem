@@ -8,3 +8,10 @@ MVC - Model、View、Controller
 界面显示、用户操作结果反馈（和用户交互）
 接收业务请求（用户请求和业务模块交互）
 处理业务请求（和数据库MYSQL交互）
+
+MySQL数据导入导出方法
+方法一：命令行界面操作
+1、导出
+mysqldump -u root -p test0918 > c:\test0918.sql
+2、导入
+mysql -u root -p test0918 < c:\test0918.sql

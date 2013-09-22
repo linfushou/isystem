@@ -130,12 +130,33 @@ function proc_delete()
 	}	
 }
 
+function proc_delete_book()
+{
+	$sql = "DELETE FROM book";
+	if (mysql_query($sql)) {
+		print_msg("成功删除所有书籍.");
+	} else {
+		print_debug("Fail to delete record, ".mysql_error());
+	}	
+}
+
 function proc_delete_def()
 {
 	print_debug("正在删除联系人");
 	$sql = "DELETE FROM persons WHERE FirstName='".$_POST["firstname"]."'";
 	if (mysql_query($sql)) {
 		print_msg("成功删除联系人 -  ".$_POST["firstname"]);
+	} else {
+		print_debug("Fail to delete record, ".mysql_error());
+	}	
+}
+
+function proc_delete_def_book()
+{
+	print_debug("正在删除书籍");
+	$sql = "DELETE FROM book WHERE name='".$_POST["name"]."'";
+	if (mysql_query($sql)) {
+		print_msg("成功删除书籍 -  ".$_POST["name"]);
 	} else {
 		print_debug("Fail to delete record, ".mysql_error());
 	}	
@@ -149,7 +170,19 @@ function proc_revise()
 	if (mysql_query($sql)) {
 		print_msg("成功修改联系人 -  ".$_POST["lastname"].$_POST["firstname"]);
 	} else {
-		print_debug("Fail to delete record, ".mysql_error());
+		print_debug("Fail to updage record, ".mysql_error());
+	}	
+}
+
+function proc_revise_book()
+{
+	print_debug("正在更新书籍");
+	$sql = "UPDATE book SET author = '".$_POST["author"]."', pubdate = '".$_POST["pubdate"]."', shtdesc = '".$_POST["shtdesc"]."', adddate = '".$_POST["adddate"]."'
+		WHERE name = '".$_POST["name"]."'";
+	if (mysql_query($sql)) {
+		print_msg("成功更新书籍 -  ".$_POST["name"]);
+	} else {
+		print_debug("Fail to updage record, ".mysql_error());
 	}	
 }
 
@@ -172,6 +205,16 @@ function check_form()
 	return true;
 }
 
+# 核对表达是否空
+function check_book_form()
+{
+	if ($_POST["name"] == "") {
+		print_msg("书名不能为空！");
+		return false;	
+	}
+	
+	return true;
+}
 
 function check_table_is_exist($find_table)
 {		
